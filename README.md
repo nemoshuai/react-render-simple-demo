@@ -68,3 +68,35 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### 创建项目
+```bash
+ npx create-react-app react-render-simple-demo
+```
+### 添加必要注释
+
+```js
+/** @jsx classic */
+function createElement() {
+  ...
+}
+```
+要在文件顶部添加，不然会报以下错误
+![报错图片](docs/pic1.png)
+
+使用这句注释，使得babel用FakeReact.createElement去转换这个jsx
+```js
+/**@jsx FakeReact.createElement */
+const element = (
+  <div>
+    普通文本
+    <span style="color: red">普通文本</span>        
+    <FuncComponent />
+    <ClassComponent />
+  </div>
+)
+```
+
+#### 参考：<br>
+[build your own react](https://pomb.us/build-your-own-react/)
